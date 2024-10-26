@@ -3,7 +3,7 @@ import {PrismaClient} from '@prisma/client'
 import cors from 'cors'
 
 const prisma = new PrismaClient;
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
@@ -49,7 +49,7 @@ app.delete('/:id', async (req, res) =>{
    });
    res.status(200).send("Usuário deletado");
 })
-app.listen(PORT, () => {
+app.listen(port, () => {
    console.log("rodando"); 
 })
 /* name: la7371180
