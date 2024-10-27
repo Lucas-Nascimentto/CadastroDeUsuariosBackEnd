@@ -2,7 +2,9 @@ import express from 'express';
 import {PrismaClient} from '@prisma/client'
 import cors from 'cors'
 
-const prisma = new PrismaClient;
+const prisma = global.prisma || new PrismaClient();
+
+if (process.env.NODE_ENV === 'production') global.prisma = prisma;
 const port = process.env.PORT || 3000;
 
 const app = express();
